@@ -2,20 +2,18 @@ import React from "react";
 import AdminNav from "./AdminNav";
 import Header from "../layout/header/Header";
 import Container from "react-bootstrap/Container";
-import TableUsers from "./TableUsers";
-import AddUsersButtons from "./AddUsersButtons";
+import AddDeviceForm from "./AddDeviceForm";
 
 
-function AdminUsers(props) {
+function AdminAddDevice(props) {
     return (
         <>
             <Header/>
             <Container className="mt-5">
                 <AdminNav/>
-                <TableUsers/>
-                <AddUsersButtons/>
+                <AddDeviceForm/>
             </Container>
         </>
     );
 }
-export default AdminUsers;
+export default AdminAddDevice;

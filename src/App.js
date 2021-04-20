@@ -10,6 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import SignIn from "./components/signin/SignIn";
 import AdminUsers from "./components/admin/AdminUsers";
+import AdminAddDevice from "./components/admin/AdminAddDevice";
+import AdminAddIllness from "./components/admin/AdminAddIllness";
 
 const history = browserHistory();
 
@@ -21,6 +23,8 @@ function App() {
               <Switch>
                   <Route history={history} path='/signin' component={SignIn} />
                   <Route history={history} path='/admin/users' component={AdminUsers} />
+                  <Route history={history} path='/admin/add_device' component={AdminAddDevice} />
+                  <Route history={history} path='/admin/add_illness' component={AdminAddIllness} />
               </Switch>
             </React.Fragment>
           </BrowserRouter>
