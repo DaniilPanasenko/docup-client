@@ -1,67 +1,41 @@
-import React from "react";
+import React, {useEffect} from "react";
 import AdminNav from "./AdminNav";
 import Header from "../layout/header/Header";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
+import {useDispatch, useSelector} from "react-redux";
+import {users} from "../../api/admin";
+import TableUsersRow from "./TableUsersRow";
+import {local} from "../../localization/locales";
 
 
 function TableUsers(props) {
+    const user = useSelector(state => state.user);
+    const language = useSelector(state => state.language);
+    const list = useSelector(state=>state.list);
+    const dispatch  = useDispatch();
+
+    useEffect(()=> {
+        dispatch(users(user.token));
+    },[]);
+
     return (
         <Table striped bordered hover variant="dark" className="mt-5">
             <thead>
             <tr>
                 <th>#</th>
-                <th>Login</th>
-                <th>Email</th>
-                <th>Account type</th>
-                <th>Status</th>
+                <th>{local(language.language,'login')}</th>
+                <th>{local(language.language,'email')}</th>
+                <th>{local(language.language,'account_type')}</th>
+                <th>{local(language.language,'status')}</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>DaniilPanasenko1</td>
-                <td>daniil.panasenko@nure.ua</td>
-                <td><Badge variant="danger">admin</Badge></td>
-                <td><Button size="sm" variant="success" className="btn-block">Active</Button></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>whaat</td>
-                <td>emiliia.voronova@nure.ua</td>
-                <td><Badge variant="warning">clinic</Badge></td>
-                <td><Button size="sm" variant="success" className="btn-block">Active</Button></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>IBolit2</td>
-                <td>ibolit2@gmail.com</td>
-                <td><Badge variant="info">doctor</Badge></td>
-                <td><Button size="sm" variant="success" className="btn-block">Active</Button></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Ivanushka</td>
-                <td>ivan.rusanov@nure.ua</td>
-                <td><Badge variant="success">patient</Badge></td>
-                <td><Button size="sm" variant="danger" className="btn-block">Blocked</Button></td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>IBolit</td>
-                <td>ibolit@gmail.com</td>
-                <td><Badge variant="info">doctor</Badge></td>
-                <td><Button size="sm" variant="success" className="btn-block">Active</Button></td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>IAmWorkInCallCenter</td>
-                <td>artem.oliinik.work@gmal.com</td>
-                <td><Badge variant="light">operator</Badge></td>
-                <td><Button size="sm" variant="danger" className="btn-block">Blocked</Button></td>
-            </tr>
+                {
+                    list.users!=null? list.users.map((item, index)=><TableUsersRow user={item} index={index+1}/>):null
+                }
             </tbody>
         </Table>
     );

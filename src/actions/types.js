@@ -1,0 +1,7 @@
+export const SET_USER = 'SET_USER';
+export const SET_MESSAGE = 'SET_MESSAGE';
+export const LOGOUT='LOGOUT';
+export const SET_LANGUAGE='SET_LANGUAGE';
+export const SET_LIST_USERS = 'SET_LIST_USERS';
+export const SET_LIST_ILLNESSES = 'SET_LIST_ILLNESSES';
+export const SET_LIST_NOTIFICATIONS = 'SET_LIST_NOTIFICATIONS';

@@ -6,10 +6,13 @@ import Col from "react-bootstrap/Col";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import AddUserForm from "./AddUserForm";
+import {useSelector} from "react-redux";
+import {local} from "../../localization/locales";
 
 function AddUsersButtons(props) {
     const [show, setShow] = useState(false);
-    const [accountType, setAccountType] = useState("Admin");
+    const [accountType, setAccountType] = useState("admin");
+    const language = useSelector(state => state.language);
 
     const handleShow = (type) => {
         setShow(true);
@@ -21,21 +24,21 @@ function AddUsersButtons(props) {
             <Container>
                 <Row className="m-auto">
                     <Col>
-                        <Button  size="md" variant="info" className="btn-block" onClick={()=>handleShow("Admin")}>
+                        <Button  size="md" variant="info" className="btn-block" onClick={()=>handleShow("admin")}>
                             <FontAwesomeIcon icon={faPlus} className="mr-sm-2"/>
-                            Admin
+                            {local(language.language,'admin_upper')}
                         </Button>
                     </Col>
                     <Col>
-                        <Button  size="md" variant="info" className="btn-block" onClick={()=>handleShow("Operator")}>
+                        <Button  size="md" variant="info" className="btn-block" onClick={()=>handleShow("operator")}>
                             <FontAwesomeIcon icon={faPlus} className="mr-sm-2"/>
-                            Operator
+                            {local(language.language,'operator_upper')}
                         </Button>
                     </Col>
                     <Col>
-                        <Button  size="md" variant="info" className="btn-block" onClick={()=>handleShow("Clinic")}>
+                        <Button  size="md" variant="info" className="btn-block" onClick={()=>handleShow("clinic")}>
                             <FontAwesomeIcon icon={faPlus} className="mr-sm-2"/>
-                            Clinic
+                            {local(language.language,'clinic_upper')}
                         </Button>
                     </Col>
                 </Row>
