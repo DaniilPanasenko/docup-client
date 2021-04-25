@@ -20,12 +20,6 @@ function Operator(props) {
             dispatch(notifications(user.token));
     },[]);
 
-    useEffect(()=>{
-        if(!user.isAuthorized || user.role!=='operator'){
-            props.history.push("/")
-        }
-    });
-
     return (
         <>
             <Header />

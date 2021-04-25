@@ -21,6 +21,7 @@ function AddDeviceForm(props) {
     const language = useSelector(state => state.language);
     const list = useSelector(state=>state.list);
     const dispatch  = useDispatch();
+    console.log('RENDER');
 
 
     useEffect(()=> {

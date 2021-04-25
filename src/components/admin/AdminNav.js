@@ -7,16 +7,18 @@ import Col from "react-bootstrap/Col";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser, faPlus} from "@fortawesome/free-solid-svg-icons";
 import Navbar from "react-bootstrap/Navbar";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {local} from "../../localization/locales";
+import {changeRoute} from "../../actions/route";
 
 
 function AdminNav(props) {
     const language = useSelector(state => state.language);
+    const  dispatch =useDispatch();
 
-    const handleUsers=()=>{props.history.push("/admin/users")};
-    const handleAddIllness=()=>{props.history.push("/admin/add_illness")};
-    const handleAddDevice=()=>{props.history.push("/admin/add_device")};
+    const handleUsers=()=>{dispatch(changeRoute("/admin/users"))};
+    const handleAddIllness=()=>{dispatch(changeRoute("/admin/add_illness"))};
+    const handleAddDevice=()=>{dispatch(changeRoute("/admin/add_device"))};
     return (
         <Container>
             <Row className="m-auto">

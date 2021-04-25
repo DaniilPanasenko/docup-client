@@ -15,7 +15,7 @@ import language from "../../reducers/language";
 
 const schemaValidation = Yup.object().shape({
     login: Yup.string().required('Required!'),
-    password: Yup.string().required('Required!'),
+ //   password: Yup.string().required('Required!'),
 });
 
 function SignIn(props) {
@@ -23,11 +23,6 @@ function SignIn(props) {
     const language = useSelector(state => state.language);
     const dispatch  = useDispatch();
 
-    useEffect(()=>{
-        if(user.isAuthorized){
-            props.history.push("/")
-        }
-    });
 
     const { values, handleChange, handleSubmit} = useFormik({
         initialValues: {

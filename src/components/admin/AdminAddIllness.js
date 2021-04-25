@@ -10,17 +10,11 @@ import {useSelector} from "react-redux";
 function AdminAddIllness(props) {
     const user = useSelector(state => state.user);
 
-    useEffect(()=>{
-        if(!user.isAuthorized  || user.role!=='admin'){
-            props.history.push("/")
-        }
-    });
-
     return (
         <>
             <Header />
             <Container className="mt-5">
-                <AdminNav history={props.history}/>
+                <AdminNav/>
                 <AddIllnessForm/>
             </Container>
         </>

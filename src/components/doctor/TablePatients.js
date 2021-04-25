@@ -1,18 +1,17 @@
 import React, {useEffect} from "react";
 import Table from "react-bootstrap/Table";
 import {useDispatch, useSelector} from "react-redux";
-import {users} from "../../api/admin";
-import TableUsersRow from "./TableUsersRow";
 import {local} from "../../localization/locales";
+import {patients} from "../../api/doctor";
 
-function TableUsers(props) {
+function TablePatients(props) {
     const user = useSelector(state => state.user);
     const language = useSelector(state => state.language);
-    const list = useSelector(state=>state.list);
+    const doctor = useSelector(state=>state.doctor);
     const dispatch  = useDispatch();
 
     useEffect(()=> {
-        dispatch(users(user.token));
+        dispatch(patients(user.token));
     },[]);
 
     return (
@@ -22,22 +21,21 @@ function TableUsers(props) {
                 <th>#</th>
                 <th>{local(language.language,'login')}</th>
                 <th>{local(language.language,'email')}</th>
-                <th>{local(language.language,'account_type')}</th>
-                <th>{local(language.language,'status')}</th>
             </tr>
             </thead>
             <tbody>
-                {
-                    list.users!=null?
-                        list.users.map((item, index) =>
-                            <TableUsersRow
-                                key={index+1}
-                                user={item}
-                                index={index+1}/>)
-                        :null
-                }
+            {
+                doctor.patients!=null?
+                    doctor.patients.map((item, index) =>
+                        (<tr>
+                            <td>{index+1}</td>
+                            <td>{item.login}</td>
+                            <td>{item.email}</td>
+                        </tr>))
+                    :null
+            }
             </tbody>
         </Table>
     );
 }
-export default TableUsers;
+export default TablePatients;

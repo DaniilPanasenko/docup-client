@@ -10,17 +10,11 @@ import {useDispatch, useSelector} from "react-redux";
 function AdminUsers(props) {
     const user = useSelector(state => state.user);
 
-    useEffect(()=>{
-        if(!user.isAuthorized){
-            props.history.push("/")
-        }
-    });
-
     return (
         <>
             <Header />
             <Container className="mt-5">
-                <AdminNav history={props.history}/>
+                <AdminNav/>
                 <TableUsers/>
                 <AddUsersButtons/>
             </Container>
